@@ -26,3 +26,5 @@ app.post('/todos', (req, res) => {
 app.listen(8000, () => {
   console.log(`The server is listening on port 8000...`);
 });
+
+module.exports = {app};
