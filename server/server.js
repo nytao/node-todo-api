@@ -10,13 +10,13 @@ var app = express();
 app.use(bodyParser.json());
 
 app.post("/todos", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   var todo = new Todo({
     text: req.body.text
   });
   todo.save().then(
     doc => {
-      console.log(`Successfully saved! ${doc}`);
+      // console.log(`Successfully saved! ${doc}`);
       res.send(doc);
     },
     err => {
@@ -29,7 +29,7 @@ app.post("/todos", (req, res) => {
 app.get("/todos", (req, res) => {
   Todo.find().then(
     todos => {
-      console.log(`Successfully fetched! ${todos}`);
+      // console.log(`Successfully fetched! ${todos}`);
       res.send({ todos });
     },
     err => {
