@@ -39,6 +39,21 @@ app.get("/todos", (req, res) => {
   );
 });
 
+app.get("/todos/:id", (req, res) => {
+  // res.send(req.params);
+  let id = req.params.id;
+  Todo.findById(id)
+    .then(todo => {
+      if (!todo) {
+        // return console.log("Todo not found!");
+        return res.status(404).send({});
+      }
+      // return console.log(`Todo found: ${JSON.stringify(todo, null, 2)}.`);
+      return res.status(200).send({ todo });
+    })
+    .catch(e => res.status(400).send({}));
+});
+
 app.listen(8000, () => {
   console.log(`The server is listening on port 8000...`);
 });
